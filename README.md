@@ -1,5 +1,5 @@
 simplify (dart)
 ===========
 
-A Go port of simplify-js (https://github.com/mourner/simplify-js).
+A Dart port of simplify-js (https://github.com/mourner/simplify-js).
 Polyline simplification library by Vladimir Agafonkin, extracted from Leaflet.
