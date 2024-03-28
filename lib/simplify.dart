@@ -1,6 +1,6 @@
 import 'dart:math';
 
-num _getSqDist<T extends Point>(
+num _getSqDist<T extends Point<double>>(
   T p1,
   T p2,
 ) {
@@ -10,12 +10,12 @@ num _getSqDist<T extends Point>(
 }
 
 // square distance from a point to a segment
-num _getSqSegDist<T extends Point>(
+double _getSqSegDist<T extends Point<double>>(
   T p,
   T p1,
   T p2,
 ) {
-  num x = p1.x, y = p1.y, dx = p2.x - x, dy = p2.y - y;
+  double x = p1.x, y = p1.y, dx = p2.x - x, dy = p2.y - y;
 
   if (dx != 0 || dy != 0) {
     final double t = ((p.x - x) * dx + (p.y - y) * dy) / (dx * dx + dy * dy);
@@ -35,7 +35,7 @@ num _getSqSegDist<T extends Point>(
   return dx * dx + dy * dy;
 }
 
-List<T> _simplifyRadialDist<T extends Point>(
+List<T> _simplifyRadialDist<T extends Point<double>>(
   List<T> points,
   double sqTolerance,
 ) {
@@ -60,18 +60,18 @@ List<T> _simplifyRadialDist<T extends Point>(
   return newPoints;
 }
 
-void _simplifyDPStep<T extends Point>(
+void _simplifyDPStep<T extends Point<double>>(
   List<T> points,
   int first,
   int last,
   double sqTolerance,
   List<T> simplified,
 ) {
-  num maxSqDist = sqTolerance;
+  double maxSqDist = sqTolerance;
   late int index;
 
   for (var i = first + 1; i < last; i++) {
-    final num sqDist = _getSqSegDist(points[i], points[first], points[last]);
+    final double sqDist = _getSqSegDist(points[i], points[first], points[last]);
 
     if (sqDist > maxSqDist) {
       index = i;
@@ -91,7 +91,7 @@ void _simplifyDPStep<T extends Point>(
 }
 
 // simplification using Ramer-Douglas-Peucker algorithm
-List<T> _simplifyDouglasPeucker<T extends Point>(
+List<T> _simplifyDouglasPeucker<T extends Point<double>>(
   List<T> points,
   double sqTolerance,
 ) {
@@ -105,7 +105,7 @@ List<T> _simplifyDouglasPeucker<T extends Point>(
 }
 
 // both algorithms combined for awesome performance
-List<T> simplify<T extends Point>(
+List<T> simplify<T extends Point<double>>(
   List<T> points, {
   double? tolerance,
   bool highestQuality = false,

@@ -1,6 +1,6 @@
 name: simplify
 description: A high-performance dart 2D/3D polyline simplification library
-version: 1.0.1
+version: 1.1.0
 repository: https://github.com/bjartebore/simplify
 
 environment:

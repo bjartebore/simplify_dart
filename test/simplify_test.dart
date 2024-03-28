@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:simplify/simplify.dart';
 import 'package:test/test.dart';
 
-const List<Point> points = [
+const List<Point<double>> points = [
   Point(224.55, 250.15),
   Point(226.91, 244.19),
   Point(233.31, 241.45),
@@ -149,12 +149,12 @@ void main() {
   });
 
   test('just return the points if it has only one point', () {
-    final result = simplify(const [Point(1, 2)]);
-    expect(result, equals(const [Point(1, 2)]));
+    final result = simplify(const [Point<double>(1, 2)]);
+    expect(result, equals(const [Point<double>(1, 2)]));
   });
 
   test('ust return the points if it has no points', () {
-    final result = simplify(const <Point>[]);
+    final result = simplify(const <Point<double>>[]);
     expect(result, equals(const []));
   });
 }
